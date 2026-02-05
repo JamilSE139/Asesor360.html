@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesor360 - Tu Asesor Digital para Electrodomésticos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 30px 0;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+        }
+
+        .logo h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #ffd166;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .hero h2 {
+            color: #1a73e8;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .advisor-section {
+            flex: 3;
+            min-width: 300px;
+        }
+
+        .info-section {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .chat-container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chat-header i {
+            font-size: 1.5rem;
+        }
+
+        .chat-header h3 {
+            font-size: 1.4rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .bot-message {
+            background-color: #f1f3f4;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+            color: #333;
+        }
+
+        .user-message {
+            background-color: #1a73e8;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .options-container {
+            padding: 15px 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option-btn {
+            padding: 10px 18px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .option-btn:hover {
+            background-color: #1a73e8;
+            color: white;
+            border-color: #1a73e8;
+            transform: translateY(-2px);
+        }
+
+        .info-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card h3 i {
+            color: #ffd166;
+        }
+
+        .product-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            margin-bottom: 15px;
+            border-left: 4px solid #1a73e8;
+        }
+
+        .product-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 8px;
+            background-color: white;
+            padding: 5px;
+        }
+
+        .product-info h4 {
+            font-size: 1.1rem;
+            color: #1a73e8;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .feature {
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #1a73e8;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .stat:first-child {
+            margin-left: 0;
+        }
+
+        .stat:last-child {
+            margin-right: 0;
+        }
+
+        .stat i {
+            font-size: 2rem;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stat {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h1>Asesor<span>360</span></h1>
+                        <p class="tagline">Tu guía experta en la compra de electrodomésticos</p>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-value">+15K</div>
+                        <div class="stat-label">Clientes asesorados</div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-thumbs-up"></i>
+                        <div class="stat-value">94%</div>
+                        <div class="stat-label">Satisfacción</div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-bolt"></i>
+                        <div class="stat-value">5 min</div>
+                        <div class="stat-label">Asesoría promedio</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Resuelve la confusión al comprar electrodomésticos</h2>
+            <p>Con Asesor360 obtén recomendaciones personalizadas basadas en tus necesidades, presupuesto y preferencias. Nuestro sistema inteligente analiza cientos de opciones para recomendarte el producto perfecto para ti.</p>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <section class="advisor-section">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <i class="fas fa-robot"></i>
+                        <h3>Asesor Digital - ¿En qué puedo ayudarte hoy?</h3>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot-message">
+                            ¡Hola! Soy tu asesor digital de electrodomésticos. Estoy aquí para ayudarte a encontrar el producto perfecto según tus necesidades. ¿Qué tipo de electrodoméstico estás buscando?
+                        </div>
+                    </div>
+                    <div class="options-container" id="optionsContainer">
+                        <!-- Las opciones se generarán dinámicamente con JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <div class="info-card">
+                    <h3><i class="fas fa-star"></i> Recomendación Actual</h3>
+                    <div id="currentRecommendation">
+                        <p>Selecciona tus preferencias en el chat para ver recomendaciones personalizadas.</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-trophy"></i> Productos Destacados</h3>
+                    <div class="product-card">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3038/3038794.png" alt="Refrigerador">
+                        <div class="product-info">
+                            <h4>Refrigerador Samsung Family Hub</h4>
+                            <p>Con pantalla táctil, capacidad de 600L y tecnología Twin Cooling Plus</p>
+                            <div class="features">
+                                <span class="feature"><i class="fas fa-snowflake"></i> A+++</span>
+                                <span class="feature"><i class="fas fa-ruler-combined"></i> 600L</span>
+                                <span class="feature"><i class="fas fa-wifi"></i> Smart</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3067/3067256.png" alt="Lavadora">
+                        <div class="product-info">
+                            <h4>Lavadora LG AI DD</h4>
+                            <p>Lavadora de carga frontal con inteligencia artificial y 10.5 kg de capacidad</p>
+                            <div class="features">
+                                <span class="feature"><i class="fas fa-tint"></i> 48L agua</span>
+                                <span class="feature"><i class="fas fa-leaf"></i> Eco</span>
+                                <span class="feature"><i class="fas fa-bolt"></i> Inverter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Asesor360 &copy; 2023 - Tu asesor digital de confianza para la compra de electrodomésticos</p>
+            <p>Este es un demo interactivo. Los productos y precios son ilustrativos.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Estado del flujo de conversación
+        const conversationState = {
+            step: 1,
+            applianceType: '',
+            budget: '',
+            sizePreference: '',
+            features: [],
+            recommendation: null
+        };
+
+        // Base de datos de productos
+        const products = {
+            refrigerator: [
+                {
+                    id: 1,
+                    name: "Refrigerador Samsung Family Hub",
+                    description: "Refrigerador side-by-side con pantalla táctil inteligente, capacidad de 600L",
+                    features: ["Pantalla táctil", "Twin Cooling Plus", "A+++ eficiencia", "Wi-Fi conectado"],
+                    price: "Alto",
+                    size: "Grande",
+                    image: "https://cdn-icons-png.flaticon.com/512/3038/3038794.png"
+                },
+                {
+                    id: 2,
+                    name: "Refrigerador Midea Frost Free",
+                    description: "Refrigerador de dos puertas con tecnología frost free, capacidad de 400L",
+                    features: ["Frost Free", "A+ eficiencia", "Diseño compacto", "Bajo consumo"],
+                    price: "Medio",
+                    size: "Mediano",
+                    image: "https://cdn-icons-png.flaticon.com/512/3038/3038794.png"
+                },
+                {
+                    id: 3,
+                    name: "Refrigerador Haier Mini Bar",
+                    description: "Refrigerador compacto ideal para espacios pequeños, capacidad de 150L",
+                    features: ["Compacto", "Bajo consumo", "Silencioso", "Económico"],
+                    price: "Bajo",
+                    size: "Pequeño",
+                    image: "https://cdn-icons-png.flaticon.com/512/3038/3038794.png"
+                }
+            ],
+            washer: [
+                {
+                    id: 4,
+                    name: "Lavadora LG AI DD",
+                    description: "Lavadora de carga frontal con inteligencia artificial y motor inverter",
+                    features: ["AI Direct Drive", "10.5 kg capacidad", "A+++ eficiencia", "Wi-Fi"],
+                    price: "Alto",
+                    size: "Grande",
+                    image: "https://cdn-icons-png.flaticon.com/512/3067/3067256.png"
+                },
+                {
+                    id: 5,
+                    name: "Lavadora Samsung EcoBubble",
+                    description: "Lavadora de carga frontal con tecnología EcoBubble para mejor limpieza",
+                    features: ["EcoBubble", "8 kg capacidad", "A++ eficiencia", "Diseño silencioso"],
+                    price: "Medio",
+                    size: "Mediano",
+                    image: "https://cdn-icons-png.flaticon.com/512/3067/3067256.png"
+                },
+                {
+                    id: 6,
+                    name: "Lavadora Midea Compacta",
+                    description: "Lavadora compacta de carga superior ideal para espacios reducidos",
+                    features: ["Compacta", "6 kg capacidad", "Bajo consumo", "Económica"],
+                    price: "Bajo",
+                    size: "Pequeño",
+                    image: "https://cdn-icons-png.flaticon.com/512/3067/3067256.png"
+                }
+            ],
+            oven: [
+                {
+                    id: 7,
+                    name: "Horno Siemens Pyrolux",
+                    description: "Horno multifunción con pirólisis y tecnología steamBake",
+                    features: ["Pirólisis", "SteamBake", "76L capacidad", "A++ eficiencia"],
+                    price: "Alto",
+                    size: "Grande",
+                    image: "https://cdn-icons-png.flaticon.com/512/3050/3050525.png"
+                },
+                {
+                    id: 8,
+                    name: "Horno Mabe Integrable",
+                    description: "Horno eléctrico integrable con 8 funciones y temporizador",
+                    features: ["Integrable", "8 funciones", "60L capacidad", "A+ eficiencia"],
+                    price: "Medio",
+                    size: "Mediano",
+                    image: "https://cdn-icons-png.flaticon.com/512/3050/3050525.png"
+                },
+                {
+                    id: 9,
+                    name: "Horno de Sobremesa Oster",
+                    description: "Horno de sobremesa compacto ideal para cocinas pequeñas",
+                    features: ["Compacto", "5 funciones", "28L capacidad", "Económico"],
+                    price: "Bajo",
+                    size: "Pequeño",
+                    image: "https://cdn-icons-png.flaticon.com/512/3050/3050525.png"
+                }
+            ]
+        };
+
+        // Opciones de conversación según el paso
+        const conversationSteps = [
+            {
+                step: 1,
+                question: "¿Qué tipo de electrodoméstico estás buscando?",
+                options: [
+                    { text: "Refrigerador", value: "refrigerator", icon: "fas fa-snowflake" },
+                    { text: "Lavadora", value: "washer", icon: "fas fa-tint" },
+                    { text: "Horno", value: "oven", icon: "fas fa-fire" },
+                    { text: "Microondas", value: "microwave", icon: "fas fa-radiation" },
+                    { text: "Lavavajillas", value: "dishwasher", icon: "fas fa-soap" }
+                ]
+            },
+            {
+                step: 2,
+                question: "¿Cuál es tu presupuesto aproximado?",
+                options: [
+                    { text: "Económico (hasta $500)", value: "Bajo", icon: "fas fa-dollar-sign" },
+                    { text: "Medio ($500 - $1,200)", value: "Medio", icon: "fas fa-dollar-sign" },
+                    { text: "Alto (más de $1,200)", value: "Alto", icon: "fas fa-dollar-sign" },
+                    { text: "No estoy seguro", value: "unsure", icon: "fas fa-question" }
+                ]
+            },
+            {
+                step: 3,
+                question: "¿Qué tamaño necesitas?",
+                options: [
+                    { text: "Pequeño (espacio limitado)", value: "Pequeño", icon: "fas fa-compress-arrows-alt" },
+                    { text: "Mediano (uso familiar)", value: "Mediano", icon: "fas fa-arrows-alt" },
+                    { text: "Grande (alta capacidad)", value: "Grande", icon: "fas fa-expand-arrows-alt" }
+                ]
+            },
+            {
+                step: 4,
+                question: "¿Qué características son importantes para ti? (Puedes elegir varias)",
+                options: [
+                    { text: "Alta eficiencia energética", value: "eficiencia", icon: "fas fa-leaf" },
+                    { text: "Tecnología inteligente (Wi-Fi)", value: "smart", icon: "fas fa-wifi" },
+                    { text: "Bajo consumo de agua", value: "agua", icon: "fas fa-tint" },
+                    { text: "Funciones especiales", value: "funciones", icon: "fas fa-cogs" },
+                    { text: "Diseño silencioso", value: "silencioso", icon: "fas fa-volume-mute" },
+                    { text: "Continuar con mis selecciones", value: "continue", icon: "fas fa-check" }
+                ]
+            }
+        ];
+
+        // Elementos del DOM
+        const chatMessages = document.getElementById('chatMessages');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const currentRecommendation = document.getElementById('currentRecommendation');
+        const progressBar = document.getElementById('progressBar');
+
+        // Función para agregar mensaje al chat
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Función para mostrar opciones
+        function showOptions(stepData) {
+            optionsContainer.innerHTML = '';
+            
+            // Mostrar pregunta del bot
+            addMessage(stepData.question);
+            
+            // Crear botones de opciones
+            stepData.options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.innerHTML = `<i class="${option.icon}"></i> ${option.text}`;
+                button.addEventListener('click', () => handleOptionClick(option.value, option.text));
+                optionsContainer.appendChild(button);
+            });
+            
+            // Actualizar barra de progreso
+            progressBar.style.width = `${(conversationState.step / conversationSteps.length) * 100}%`;
+        }
+
+        // Función para manejar clic en opción
+        function handleOptionClick(value, text) {
+            // Agregar mensaje del usuario
+            addMessage(text, true);
+            
+            // Actualizar estado según el paso actual
+            switch(conversationState.step) {
+                case 1:
+                    conversationState.applianceType = value;
+                    break;
+                case 2:
+                    conversationState.budget = value;
+                    break;
+                case 3:
+                    conversationState.sizePreference = value;
+                    break;
+                case 4:
+                    if (value === 'continue') {
+                        // Generar recomendación
+                        generateRecommendation();
+                        return;
+                    } else {
+                        // Agregar o quitar característica
+                        const index = conversationState.features.indexOf(value);
+                        if (index === -1) {
+                            conversationState.features.push(value);
+                        } else {
+                            conversationState.features.splice(index, 1);
+                        }
+                        // Mostrar características seleccionadas
+                        showSelectedFeatures();
+                        return;
+                    }
+            }
+            
+            // Avanzar al siguiente paso
+            conversationState.step++;
+            
+            // Si hemos pasado por todos los pasos, generar recomendación
+            if (conversationState.step > conversationSteps.length) {
+                generateRecommendation();
+            } else {
+                // Mostrar opciones del siguiente paso
+                const nextStep = conversationSteps.find(s => s.step === conversationState.step);
+                setTimeout(() => showOptions(nextStep), 500);
+            }
+        }
+
+        // Función para mostrar características seleccionadas
+        function showSelectedFeatures() {
+            if (conversationState.features.length === 0) {
+                addMessage("No has seleccionado características aún. ¿Qué es importante para ti?");
+            } else {
+                addMessage(`Has seleccionado: ${conversationState.features.length} característica(s). Puedes seguir seleccionando o hacer clic en "Continuar con mis selecciones".`);
+            }
+            
+            // Volver a mostrar las opciones del paso 4
+            const stepData = conversationSteps.find(s => s.step === 4);
+            optionsContainer.innerHTML = '';
+            
+            stepData.options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                
+                // Resaltar si ya está seleccionado
+                if (conversationState.features.includes(option.value)) {
+                    button.style.backgroundColor = '#1a73e8';
+                    button.style.color = 'white';
+                    button.style.borderColor = '#1a73e8';
+                }
+                
+                button.innerHTML = `<i class="${option.icon}"></i> ${option.text}`;
+                button.addEventListener('click', () => handleOptionClick(option.value, option.text));
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        // Función para generar recomendación
+        function generateRecommendation() {
+            // Filtrar productos según las preferencias
+            const filteredProducts = products[conversationState.applianceType]?.filter(product => {
+                let matches = true;
+                
+                if (conversationState.budget && conversationState.budget !== 'unsure') {
+                    matches = matches && product.price === conversationState.budget;
+                }
+                
+                if (conversationState.sizePreference) {
+                    matches = matches && product.size === conversationState.sizePreference;
+                }
+                
+                return matches;
+            }) || [];
+            
+            // Seleccionar el primer producto que coincida (o uno aleatorio si no hay coincidencias)
+            let recommendedProduct;
+            if (filteredProducts.length > 0) {
+                recommendedProduct = filteredProducts[0];
+            } else if (products[conversationState.applianceType]?.length > 0) {
+                // Si no hay coincidencias exactas, mostrar uno aleatorio
+                const productArray = products[conversationState.applianceType];
+                recommendedProduct = productArray[Math.floor(Math.random() * productArray.length)];
+            }
+            
+            // Guardar la recomendación en el estado
+            conversationState.recommendation = recommendedProduct;
+            
+            // Mostrar mensaje final
+            addMessage("¡Perfecto! He analizado tus necesidades y tengo una recomendación para ti.");
+            
+            // Mostrar la recomendación
+            setTimeout(() => showRecommendation(recommendedProduct), 800);
+            
+            // Mostrar opción para reiniciar
+            setTimeout(() => {
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.innerHTML = '<i class="fas fa-redo"></i> Realizar nueva consulta';
+                button.addEventListener('click', resetConversation);
+                optionsContainer.innerHTML = '';
+                optionsContainer.appendChild(button);
+            }, 1500);
+            
+            // Actualizar barra de progreso al 100%
+            progressBar.style.width = '100%';
+        }
+
+        // Función para mostrar recomendación
+        function showRecommendation(product) {
+            if (!product) {
+                currentRecommendation.innerHTML = `
+                    <p>Lo siento, no encontré productos que coincidan exactamente con tus preferencias. Te recomiendo visitar nuestra tienda para obtener asesoría personalizada.</p>
+                `;
+                return;
+            }
+            
+            currentRecommendation.innerHTML = `
+                <div class="product-card">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h4>${product.name}</h4>
+                        <p>${product.description}</p>
+                        <div class="features">
+                            ${product.features.map(feature => `<span class="feature"><i class="fas fa-check"></i> ${feature}</span>`).join('')}
+                        </div>
+                        <div style="margin-top: 10px; font-weight: bold; color: #1a73e8;">
+                            <i class="fas fa-tags"></i> Rango de precio: ${product.price} | 
+                            <i class="fas fa-ruler-combined"></i> Tamaño: ${product.size}
+                        </div>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; font-style: italic;">Esta recomendación se basa en tus preferencias: ${conversationState.applianceType}, presupuesto ${conversationState.budget}, tamaño ${conversationState.sizePreference}.</p>
+            `;
+            
+            // Mostrar mensaje con la recomendación
+            addMessage(`Te recomiendo el "${product.name}". Es una excelente opción que cumple con tus criterios de presupuesto y tamaño. ¿Te gustaría realizar otra consulta o necesitas más información sobre este producto?`);
+        }
+
+        // Función para reiniciar la conversación
+        function resetConversation() {
+            // Reiniciar estado
+            conversationState.step = 1;
+            conversationState.applianceType = '';
+            conversationState.budget = '';
+            conversationState.sizePreference = '';
+            conversationState.features = [];
+            conversationState.recommendation = null;
+            
+            // Limpiar chat
+            chatMessages.innerHTML = '';
+            currentRecommendation.innerHTML = '<p>Selecciona tus preferencias en el chat para ver recomendaciones personalizadas.</p>';
+            
+            // Reiniciar barra de progreso
+            progressBar.style.width = '0%';
+            
+            // Iniciar conversación nuevamente
+            addMessage("¡Hola! Soy tu asesor digital de electrodomésticos. Estoy aquí para ayudarte a encontrar el producto perfecto según tus necesidades. ¿Qué tipo de electrodoméstico estás buscando?");
+            
+            // Mostrar opciones del primer paso
+            const firstStep = conversationSteps.find(s => s.step === 1);
+            showOptions(firstStep);
+        }
+
+        // Inicializar conversación
+        window.onload = function() {
+            // Mostrar opciones del primer paso
+            const firstStep = conversationSteps.find(s => s.step === 1);
+            showOptions(firstStep);
+        };
+    </script>
+</body>
+</html>
